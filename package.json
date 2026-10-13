@@ -8,6 +8,7 @@
     "test": "node --test"
   },
   "dependencies": {
+    "@tinacms/cli": "^2.6.0",
     "express": "5.2.1",
     "generator-jhipster": "^9.4.0",
     "sqlite3": "6.0.1"
