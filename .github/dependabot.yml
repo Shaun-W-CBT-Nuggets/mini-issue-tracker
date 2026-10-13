@@ -1,0 +1,14 @@
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "11:09"
+      timezone: "America/Detroit"
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "express"
+        update-types:
+          - "version-update:semver-major"
