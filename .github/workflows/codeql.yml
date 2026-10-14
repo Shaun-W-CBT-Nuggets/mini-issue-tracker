@@ -23,7 +23,7 @@ jobs:
         uses: github/codeql-action/init@v4
         with:
           languages: javascript-typescript
-          config-file: ./.github/codeql/codeql-config.yml
+          queries: ./.github/codeql/queries/find-eval.ql
 
       - name: Run CodeQL Analysis
         uses: github/codeql-action/analyze@v4
