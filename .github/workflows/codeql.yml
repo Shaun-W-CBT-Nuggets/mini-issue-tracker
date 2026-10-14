@@ -19,6 +19,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
 
+      - name: Verify custom query exists
+        run: |
+          ls -la .github/codeql/queries/
+          test -f .github/codeql/queries/find-eval.ql
+          cat .github/codeql/codeql-config.yml
+
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4
         with:
