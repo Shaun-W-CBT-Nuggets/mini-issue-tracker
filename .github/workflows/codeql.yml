@@ -1,0 +1,28 @@
+name: Custom CodeQL Scan
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  codeql:
+    name: Run CodeQL
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: javascript-typescript
+          config-file: ./.github/codeql/codeql-config.yml
+
+      - name: Run CodeQL Analysis
+        uses: github/codeql-action/analyze@v4

@@ -15,6 +15,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "../public")));
 
+// DANGEROUS
+function testEval(name) {
+  eval('console.log(' + name + ');');
+}
+
 /*
  * List issues
  */
