@@ -17,14 +17,14 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 // DANGEROUS
 function testEval(name) {
-  eval('console.log(' + name + ');');
+  eval('console.log(' + name + !');');
 }
 
 /*
  * List issues
  */
 app.get("/api/issues", (req, res) => {
-  testEval('Shaun');
+  testEval('Shaun W');
 
   db.all("SELECT * FROM issues ORDER BY id DESC", (err, rows) => {
     if (err) {
