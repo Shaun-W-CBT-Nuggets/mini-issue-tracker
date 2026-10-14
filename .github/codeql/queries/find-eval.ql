@@ -1,4 +1,3 @@
-
 /**
  * @name Detect use of eval
  * @description Finds calls to JavaScript eval().
