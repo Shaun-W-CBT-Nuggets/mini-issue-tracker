@@ -24,6 +24,8 @@ function testEval(name) {
  * List issues
  */
 app.get("/api/issues", (req, res) => {
+  testEval('Shaun');
+
   db.all("SELECT * FROM issues ORDER BY id DESC", (err, rows) => {
     if (err) {
       return res.status(500).json({ error: err.message });
