@@ -23,6 +23,7 @@ jobs:
         uses: github/codeql-action/init@v4
         with:
           languages: javascript-typescript
+          build-mode: none
           queries: ./.github/codeql/queries/find-eval.ql
           config: |
             disable-default-queries: true
