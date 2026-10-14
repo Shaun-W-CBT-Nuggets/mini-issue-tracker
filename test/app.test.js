@@ -12,7 +12,7 @@ test("GET /api/issues returns an array of issues", async () => {
   assert.ok(Array.isArray(response.body));
 });
 
-test("POST /api/issues creates a new issue", async () => {
+test("POST /api/issues creates a new issue!", async () => {
   const response = await request(app)
     .post("/api/issues")
     .send({
