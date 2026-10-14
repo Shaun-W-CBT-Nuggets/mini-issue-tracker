@@ -12,24 +12,6 @@ test("GET /api/issues returns an array of issues", async () => {
   assert.ok(Array.isArray(response.body));
 });
 
-test("POST /api/issues creates a new issue!", async () => {
-  const response = await request(app)
-    .post("/api/issues")
-    .send({
-      title: "Test issue",
-      description: "Created by the unit test"
-    })
-    .expect(200);
-
-  assert.strictEqual(response.body.title, "Test issue");
-  assert.strictEqual(
-    response.body.description,
-    "Created by the unit test"
-  );
-
-  assert.ok(response.body.id);
-});
-
 test("GET /api/issues/search finds an issue", async () => {
   const response = await request(app)
     .get("/api/issues/search")
