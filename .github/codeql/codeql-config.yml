@@ -1,4 +1,0 @@
-name: "Custom CodeQL Configuration"
-
-queries:
-  - uses: ./.github/codeql/queries/find-eval.ql

@@ -15,17 +15,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "../public")));
 
-// DANGEROUS
-function testEval(name) {
-  eval('console.log(' + name + !');');
-}
-
 /*
  * List issues
  */
 app.get("/api/issues", (req, res) => {
-  testEval('Shaun W');
-
   db.all("SELECT * FROM issues ORDER BY id DESC", (err, rows) => {
     if (err) {
       return res.status(500).json({ error: err.message });
