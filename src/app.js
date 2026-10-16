@@ -52,18 +52,17 @@ app.post("/api/issues", (req, res) => {
 });
 
 /*
- * INTENTIONALLY VULNERABLE: SQL Injection
- *
  * Example:
  * /api/issues/search?q=Security
  */
 app.get("/api/issues/search", (req, res) => {
   const query = req.query.q || "";
+  const likeQuery = `%${query}%`
 
   const sql =
-    `SELECT * FROM issues WHERE title LIKE '%${query}%'`;
+    `SELECT * FROM issues WHERE title LIKE ?`;
 
-  db.all(sql, (err, rows) => {
+  db.all(sql, [likeQuery], (err, rows) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
