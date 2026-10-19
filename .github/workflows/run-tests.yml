@@ -1,16 +1,32 @@
 name: Run Tests
 
 on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: A message to print at the beginning of the workflow
+        type: string
   pull_request:
     branches:
       - main
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   test:
     name: Unit Tests
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+
     steps:
+      - name: Print message
+        run: |
+          echo "Running tests with message: ${{ inputs.message }}"
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -25,3 +41,14 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+  comment-on-pr:
+    name: Comment On PR
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Leave Comment On PR
+        run: echo "This is just a placeholder..."
